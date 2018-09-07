@@ -56,7 +56,7 @@ system property `config.location` when starting the JVM:
  
     -Dconfig.location=/path/to/config.yml
 
-The following shows an example configuration with a basic profile:
+The following shows an example configuration:
     
     intune:
         tenant: sometenant.onmicrosoft.com
@@ -111,7 +111,7 @@ Section (**scep:**) containing configuration needed for the SCEP service.
 | keystoreAlias    | Alias of key to use within key store. If not set the first key entry will be used. *(Optional)*
 
 ### Profile configuration
-Section (**profile:**) containing configuration needed to issue certificates from EJBCA. These values will be used as default profile values and can be overridden by custom profiles if needed (described in section *Custom profiles* below).
+Section (**profile:**) containing configuration needed to issue certificates from EJBCA.
 
 | Key                  | Description
 | -------------------- | -----------
@@ -119,46 +119,6 @@ Section (**profile:**) containing configuration needed to issue certificates fro
 | certificateProfile   | Certificate profile to use for mobile device certificates.
 | endEntityProfile     | End entity profile to use for mobile device certificates.
 | baseDN               | Optional DN string to append to all certificates, ex: "O=Some Company,C=SE".
-
-## Custom Profiles
-Custom profiles can be used in order to enroll multiple SCEP certificates to each device 
-(ie. one device certificate and one user certificate) but only using a single instance of Intune EJBCA Connector.
-
-### Custom profiles configuration
-Custom profiles are added in the configuration file in the section **customProfiles:** that should 
-contain sub-sections for each custom profile. The following gives an example of such section that could
-be added to the configuration. Here we define two custom profiles **mobile** and **user** that can be
-used to issue two different SCEP certificates from different certificate authorities. Note that the names
-*mobile* and *user* are arbitrary and can be given any name, and any number of profiles can be configured.
-
-    customProfiles:
-        mobile:
-            certificateAuthority: LCSO_MobileCA
-            certificateProfile: CP_LCSO_Mobile
-            endEntityProfile: EEP_LCSO_Mobile
-            baseDN: OU=Mobiles,O=Lab Certificate Services Org,C=SE
-        user:
-            certificateAuthority: LCSO_UserCA
-            certificateProfile: CP_LCSO_User
-            endEntityProfile: EEP_LCSO_User
-            baseDN: OU=Users,O=Lab Certificate Services Org,C=SE
-
-### Enrolling using custom profiles
-When custom profiles have been configured it is possible to specify them in the SCEP Server URL
-that is entered into Intune SCEP profile configuration. The last segment of the base URL 
-(ending with /scep) is treated as the custom profile name.
-
-The following is an example of a basic SCEP Server URL without custom profile:
-
-    https://server.somehost.org/intune-ejbca-connector/scep
-    
-The following is an example of a SCEP Server URL with the custom profile *mobile*:
-
-    https://server.somehost.org/intune-ejbca-connector/scep/mobile
-
-The following is an example of a SCEP Server URL with the custom profile *user*:
-
-    https://server.somehost.org/intune-ejbca-connector/scep/user
 
 ## Logging
 Log is written to standard output which will be available in the application server log (eg. catalina.out)

@@ -42,15 +42,14 @@ class IntuneScepServlet extends ScepServlet {
 
     @Override
     protected List<X509Certificate> doEnrol(PKCS10CertificationRequest pkcs10req, TransactionId transactionId) throws Exception {
-        String enrollmentProfile = getEnrollmentProfile()
         List<X509Certificate> certificateChain = []
 
         if(intuneService.validateRequest(pkcs10req, transactionId)){
             log.info "Processing certificate request (Requested subject: ${pkcs10req.subject.toString()}, Transaction ID: ${transactionId}"
-            X509Certificate certificate = ejbcaService.requestCertificate(pkcs10req, enrollmentProfile)
+            X509Certificate certificate = ejbcaService.requestCertificate(pkcs10req)
             if(certificate != null){
                 certificateChain.add(certificate)
-                certificateChain.addAll(ejbcaService.getCACertificates(enrollmentProfile))
+                certificateChain.addAll(ejbcaService.getCACertificates())
 
                 intuneService.completeRequest(pkcs10req, certificate, transactionId)
                 log.info "Certificate issued successfully (Subject DN: ${certificate.subjectDN.toString()}, Transaction ID: ${transactionId}"
@@ -155,16 +154,5 @@ class IntuneScepServlet extends ScepServlet {
     @Override
     protected X509CRL doGetCrl(X500Name issuer, BigInteger serial) throws Exception {
         throw new OperationFailureException("Not implemented.")
-    }
-
-    private String getEnrollmentProfile() {
-        String enrollmentProfile = null
-        String contextPath = getServletContext().contextPath
-
-        if(contextPath != null && !contextPath.isEmpty()){
-            enrollmentProfile = Paths.get(contextPath)?.getFileName()
-        }
-
-        return enrollmentProfile
     }
 }

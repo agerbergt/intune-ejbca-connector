@@ -3,7 +3,6 @@ package org.certificateservices.intune.ejbcaconnector
 import grails.core.GrailsApplication
 import grails.gorm.transactions.Transactional
 import org.apache.commons.lang.RandomStringUtils
-import org.apache.http.ssl.SSLContexts
 import org.bouncycastle.asn1.x500.style.BCStyle
 import org.bouncycastle.asn1.x509.Extension
 import org.bouncycastle.asn1.x509.GeneralName
@@ -20,7 +19,6 @@ import javax.net.ssl.HttpsURLConnection
 import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLSocketFactory
-import javax.wsdl.WSDLException
 import javax.xml.namespace.QName
 import java.security.KeyStore
 import java.security.SecureRandom
@@ -32,10 +30,10 @@ class EjbcaService {
     static final String EJBCA_TOKEN_TYPE_USERGENERATED = "USERGENERATED"
     static final String EJBCA_RESPONSETYPE_CERTIFICATE = "CERTIFICATE"
 
-    private String defaultCertificateAuthority
-    private String defaultCertificateProfile
-    private String defaultEndEntityProfile
-    private String defaultBaseDN
+    private String certificateAuthority
+    private String certificateProfile
+    private String endEntityProfile
+    private String baseDN
     private EjbcaWS ejbcaWS
     private List<X509Certificate> cACertificates
     private static boolean initialized
@@ -45,18 +43,17 @@ class EjbcaService {
     @PostConstruct
     void init() {
         if(grailsApplication.config.ejbca.keystorePath && grailsApplication.config.ejbca.keystorePassword){
-            HttpsURLConnection.setDefaultSSLSocketFactory(getSSLSocketFactory(
-                    grailsApplication.config.ejbca.keystorePath, grailsApplication.config.ejbca.keystorePassword))
+            System.setProperty("javax.net.ssl.keyStore", grailsApplication.config.ejbca.keystorePath);
+            System.setProperty("javax.net.ssl.keyStorePassword", grailsApplication.config.ejbca.keystorePassword);
         } else {
-            log.error "Missing required configuration 'ejbca.keystorePath' and/or 'ejbca.keystorePassword'."
-            return
+            throw new InvalidConfigurationException("Missing required configuration 'ejbca.keystorePath' and/or 'ejbca.keystorePassword'.")
         }
 
         if(grailsApplication.config.profile.certificateAuthority && grailsApplication.config.profile.certificateProfile &&
                 grailsApplication.config.profile.endEntityProfile) {
-            defaultCertificateAuthority = grailsApplication.config.profile.certificateAuthority
-            defaultCertificateProfile = grailsApplication.config.profile.certificateProfile
-            defaultEndEntityProfile = grailsApplication.config.profile.endEntityProfile
+            certificateAuthority = grailsApplication.config.profile.certificateAuthority
+            certificateProfile = grailsApplication.config.profile.certificateProfile
+            endEntityProfile = grailsApplication.config.profile.endEntityProfile
         } else {
             log.error "Missing required configuration 'profile.certificateAuthority', 'profile.certificateProfile' and/or 'profile.endEntityProfile'."
             return
@@ -76,26 +73,15 @@ class EjbcaService {
             return
         }
 
-        defaultBaseDN = grailsApplication.config.profile.baseDN
+        baseDN = grailsApplication.config.profile.baseDN
         initialized = true
     }
 
-    private SSLSocketFactory getSSLSocketFactory(String keystorePath, String keystorePassword ) {
-        KeyStore keyStore = KeyStore.getInstance("JKS")
-        keyStore.load(new FileInputStream(new File(keystorePath)), keystorePassword.toCharArray())
-
-        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509")
-        keyManagerFactory.init(keyStore, keystorePassword.toCharArray())
-        SSLContext context = SSLContext.getInstance("TLS")
-        context.init(keyManagerFactory.getKeyManagers(), null, new SecureRandom())
-        return context.getSocketFactory()
-    }
-
-    X509Certificate requestCertificate(PKCS10CertificationRequest request, String enrollmentProfile) {
+    X509Certificate requestCertificate(PKCS10CertificationRequest request) {
         String subjectAltName
         String username = CertUtils.getSubjectDNField(request.subject.toString(), BCStyle.CN)
         String password = RandomStringUtils.random(16, true, true)
-        String subjectDN = getSubjectDN(request, enrollmentProfile)
+        String subjectDN = getSubjectDN(request)
 
         Extension sanExtension = CertUtils.getSubjectAlternativeNameExtensionFromCertificateRequest(request)
         String upn = CertUtils.getSubjectAlternativeNameFieldFromExtension(sanExtension, GeneralName.otherName)
@@ -117,24 +103,24 @@ class EjbcaService {
         user.setPassword(password)
         user.setClearPwd(false)
         user.setSubjectDN(subjectDN)
-        user.setCaName(getCertificateAuthority(enrollmentProfile))
+        user.setCaName(getCertificateAuthority())
         user.setEmail(email)
         user.setSubjectAltName(subjectAltName)
         user.setStatus(EJBCA_USER_STATUS_NEW)
         user.setTokenType(EJBCA_TOKEN_TYPE_USERGENERATED)
-        user.setEndEntityProfileName(getEndEntityProfile(enrollmentProfile))
-        user.setCertificateProfileName(getCertificateProfile(enrollmentProfile))
+        user.setEndEntityProfileName(getEndEntityProfile())
+        user.setCertificateProfileName(getCertificateProfile())
         ejbcaWS.editUser(user)
 
         CertificateResponse response = ejbcaWS.pkcs10Request(username, password, new String(Base64.encode(request.encoded)), null, EJBCA_RESPONSETYPE_CERTIFICATE)
         return CertUtils.getX509CertificateFromByteArray(Base64.decode(response.data))
     }
 
-    List<X509Certificate> getCACertificates(String enrollmentProfile) {
+    List<X509Certificate> getCACertificates() {
         if(cACertificates == null){
             try {
-                log.debug "Retrieving certificate chain for CA (${defaultCertificateAuthority}) from EJBCA..."
-                List<Certificate> chain = ejbcaWS.getLastCAChain(defaultCertificateAuthority)
+                log.debug "Retrieving certificate chain for CA (${certificateAuthority}) from EJBCA..."
+                List<Certificate> chain = ejbcaWS.getLastCAChain(certificateAuthority)
 
                 cACertificates = []
                 chain.each {
@@ -151,44 +137,19 @@ class EjbcaService {
         return initialized
     }
 
-    private String getSubjectDN(PKCS10CertificationRequest request, String enrollmentProfile) {
-        String baseDN = defaultBaseDN
-        if(enrollmentProfile != null){
-            baseDN = grailsApplication.config.getProperty("customProfiles.${enrollmentProfile}.baseDN") ?: baseDN
-        }
+    private String getSubjectDN(PKCS10CertificationRequest request) {
         return request.subject.toString() + (baseDN ? ",${baseDN}":"")
     }
 
-    private String getCertificateAuthority(enrollmentProfile) {
-        String certificateAuthority = defaultCertificateAuthority
-        if(enrollmentProfile != null){
-            certificateAuthority = grailsApplication.config.getProperty("customProfiles.${enrollmentProfile}.certificateAuthority")
-            if(certificateAuthority == null){
-                throw new InvalidConfigurationException("Missing configuration 'certificateAuthority' for custom profile '${enrollmentProfile}'")
-            }
-        }
+    private String getCertificateAuthority() {
         return certificateAuthority
     }
 
-    private String getEndEntityProfile(enrollmentProfile) {
-        String endEntityProfile = defaultEndEntityProfile
-        if(enrollmentProfile != null){
-            endEntityProfile = grailsApplication.config.getProperty("customProfiles.${enrollmentProfile}.endEntityProfile")
-            if(endEntityProfile == null){
-                throw new InvalidConfigurationException("Missing configuration 'endEntityProfile' for custom profile '${enrollmentProfile}'")
-            }
-        }
+    private String getEndEntityProfile() {
         return endEntityProfile
     }
 
-    private String getCertificateProfile(enrollmentProfile) {
-        String certificateProfile = defaultCertificateProfile
-        if(enrollmentProfile != null){
-            certificateProfile = grailsApplication.config.getProperty("customProfiles.${enrollmentProfile}.certificateProfile")
-            if(certificateProfile == null){
-                throw new InvalidConfigurationException("Missing configuration 'certificateProfile' for custom profile '${enrollmentProfile}'")
-            }
-        }
+    private String getCertificateProfile() {
         return certificateProfile
     }
 }

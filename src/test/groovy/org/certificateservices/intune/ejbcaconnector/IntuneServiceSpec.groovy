@@ -11,8 +11,5 @@ class IntuneServiceSpec extends Specification implements ServiceUnitTest<IntuneS
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
-    }
+    // TODO: Implement tests
 }
