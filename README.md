@@ -2,6 +2,12 @@
 Intune EJBCA Connector is a SCEP server that supports request validation 
 through Microsoft Intune and certificate enrollment through EJBCA.
 
+## Requirements
+- EJBCA 6 (Developed with version 6.3.1.1)
+- Microsoft Intune Tenant
+- Tomcat (Tested with version 7)
+- Java (Verified with version 8)
+
 ## Setup Guide
 1.  Prepare your Microsoft Intune tenant for third-party CA integration as
     described in the following article:
@@ -22,14 +28,14 @@ through Microsoft Intune and certificate enrollment through EJBCA.
     web application. It is strongly recommended to setup a secure HTTPS
     connector, which will be using the SSL server certificate mentioned in step 2.
     
-    **NOTE:** The WAR file contains an embedded Tomcat that can be used for testing. To start the connector you could simply run:
-    `java -jar intune-ejbca-connector.war` and browse to http://localhost:8080 to verify it has been started.
-
 4.  Create configuration in `/etc/intune-ejbca-connector.yml` 
     (See section Configuration). It should be owned and readable only by the application server as it contains sensitive information.
     
 5.  Deploy `intune-ejbca-connector.war` in to *webapps* directory
     of the Tomcat server and start/restart the application server.
+    
+    **NOTE:** Verify that application as started successfully by opening http://localhost:8080/intune-ejbca-connector
+    in a browser. It should say *Ready to serve!* if everything seems OK.
 
 6.  Setup and assign Intune SCEP profile as described in the following
     article:

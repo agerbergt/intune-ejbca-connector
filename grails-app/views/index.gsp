@@ -1,9 +1,6 @@
 <%@ page import="org.certificateservices.intune.ejbcaconnector.EjbcaService" %>
 <%@ page import="org.certificateservices.intune.ejbcaconnector.IntuneService" %>
-<%
-    def ejbcaService = grailsApplication.classLoader.loadClass("org.certificateservices.intune.ejbcaconnector.EjbcaService").newInstance()
-    def intuneService = grailsApplication.classLoader.loadClass("org.certificateservices.intune.ejbcaconnector.IntuneService").newInstance()
-%>
+
 <!doctype html>
 <html>
 <head>
@@ -25,7 +22,7 @@
                 <p>Ready to serve!</p>
             </g:else>
             <p>
-                <a href="https://github.com/agerbergt/intune-ejbca-connector" target="_blank">View Documentation on Github</a>
+                <a href="https://github.com/agerbergt/intune-ejbca-connector/blob/master/README.md" target="_blank">View Documentation on Github</a>
             </p>
         </section>
     </div>
