@@ -1,0 +1,3129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.protocol.core.ejbca.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EjbcaWSService" targetNamespace="http://ws.protocol.core.ejbca.org/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.protocol.core.ejbca.org/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ws.protocol.core.ejbca.org/">
+  <xs:element name="addSubjectToRole" type="tns:addSubjectToRole"/>
+  <xs:element name="addSubjectToRoleResponse" type="tns:addSubjectToRoleResponse"/>
+  <xs:element name="caCertResponse" type="tns:caCertResponse"/>
+  <xs:element name="caCertResponseResponse" type="tns:caCertResponseResponse"/>
+  <xs:element name="caRenewCertRequest" type="tns:caRenewCertRequest"/>
+  <xs:element name="caRenewCertRequestResponse" type="tns:caRenewCertRequestResponse"/>
+  <xs:element name="certificateRequest" type="tns:certificateRequest"/>
+  <xs:element name="certificateRequestResponse" type="tns:certificateRequestResponse"/>
+  <xs:element name="checkRevokationStatus" type="tns:checkRevokationStatus"/>
+  <xs:element name="checkRevokationStatusResponse" type="tns:checkRevokationStatusResponse"/>
+  <xs:element name="createCA" type="tns:createCA"/>
+  <xs:element name="createCAResponse" type="tns:createCAResponse"/>
+  <xs:element name="createCRL" type="tns:createCRL"/>
+  <xs:element name="createCRLResponse" type="tns:createCRLResponse"/>
+  <xs:element name="createCryptoToken" type="tns:createCryptoToken"/>
+  <xs:element name="createCryptoTokenResponse" type="tns:createCryptoTokenResponse"/>
+  <xs:element name="crmfRequest" type="tns:crmfRequest"/>
+  <xs:element name="crmfRequestResponse" type="tns:crmfRequestResponse"/>
+  <xs:element name="customLog" type="tns:customLog"/>
+  <xs:element name="customLogResponse" type="tns:customLogResponse"/>
+  <xs:element name="cvcRequest" type="tns:cvcRequest"/>
+  <xs:element name="cvcRequestResponse" type="tns:cvcRequestResponse"/>
+  <xs:element name="deleteUserDataFromSource" type="tns:deleteUserDataFromSource"/>
+  <xs:element name="deleteUserDataFromSourceResponse" type="tns:deleteUserDataFromSourceResponse"/>
+  <xs:element name="editUser" type="tns:editUser"/>
+  <xs:element name="editUserResponse" type="tns:editUserResponse"/>
+  <xs:element name="existsHardToken" type="tns:existsHardToken"/>
+  <xs:element name="existsHardTokenResponse" type="tns:existsHardTokenResponse"/>
+  <xs:element name="fetchUserData" type="tns:fetchUserData"/>
+  <xs:element name="fetchUserDataResponse" type="tns:fetchUserDataResponse"/>
+  <xs:element name="findCerts" type="tns:findCerts"/>
+  <xs:element name="findCertsResponse" type="tns:findCertsResponse"/>
+  <xs:element name="findUser" type="tns:findUser"/>
+  <xs:element name="findUserResponse" type="tns:findUserResponse"/>
+  <xs:element name="genTokenCertificates" type="tns:genTokenCertificates"/>
+  <xs:element name="genTokenCertificatesResponse" type="tns:genTokenCertificatesResponse"/>
+  <xs:element name="generateCryptoTokenKeys" type="tns:generateCryptoTokenKeys"/>
+  <xs:element name="generateCryptoTokenKeysResponse" type="tns:generateCryptoTokenKeysResponse"/>
+  <xs:element name="getAuthorizedEndEntityProfiles" type="tns:getAuthorizedEndEntityProfiles"/>
+  <xs:element name="getAuthorizedEndEntityProfilesResponse" type="tns:getAuthorizedEndEntityProfilesResponse"/>
+  <xs:element name="getAvailableCAs" type="tns:getAvailableCAs"/>
+  <xs:element name="getAvailableCAsInProfile" type="tns:getAvailableCAsInProfile"/>
+  <xs:element name="getAvailableCAsInProfileResponse" type="tns:getAvailableCAsInProfileResponse"/>
+  <xs:element name="getAvailableCAsResponse" type="tns:getAvailableCAsResponse"/>
+  <xs:element name="getAvailableCertificateProfiles" type="tns:getAvailableCertificateProfiles"/>
+  <xs:element name="getAvailableCertificateProfilesResponse" type="tns:getAvailableCertificateProfilesResponse"/>
+  <xs:element name="getCertificate" type="tns:getCertificate"/>
+  <xs:element name="getCertificateResponse" type="tns:getCertificateResponse"/>
+  <xs:element name="getCertificatesByExpirationTime" type="tns:getCertificatesByExpirationTime"/>
+  <xs:element name="getCertificatesByExpirationTimeAndIssuer" type="tns:getCertificatesByExpirationTimeAndIssuer"/>
+  <xs:element name="getCertificatesByExpirationTimeAndIssuerResponse" type="tns:getCertificatesByExpirationTimeAndIssuerResponse"/>
+  <xs:element name="getCertificatesByExpirationTimeAndType" type="tns:getCertificatesByExpirationTimeAndType"/>
+  <xs:element name="getCertificatesByExpirationTimeAndTypeResponse" type="tns:getCertificatesByExpirationTimeAndTypeResponse"/>
+  <xs:element name="getCertificatesByExpirationTimeResponse" type="tns:getCertificatesByExpirationTimeResponse"/>
+  <xs:element name="getEjbcaVersion" type="tns:getEjbcaVersion"/>
+  <xs:element name="getEjbcaVersionResponse" type="tns:getEjbcaVersionResponse"/>
+  <xs:element name="getHardTokenData" type="tns:getHardTokenData"/>
+  <xs:element name="getHardTokenDataResponse" type="tns:getHardTokenDataResponse"/>
+  <xs:element name="getHardTokenDatas" type="tns:getHardTokenDatas"/>
+  <xs:element name="getHardTokenDatasResponse" type="tns:getHardTokenDatasResponse"/>
+  <xs:element name="getLastCAChain" type="tns:getLastCAChain"/>
+  <xs:element name="getLastCAChainResponse" type="tns:getLastCAChainResponse"/>
+  <xs:element name="getLastCertChain" type="tns:getLastCertChain"/>
+  <xs:element name="getLastCertChainResponse" type="tns:getLastCertChainResponse"/>
+  <xs:element name="getLatestCRL" type="tns:getLatestCRL"/>
+  <xs:element name="getLatestCRLResponse" type="tns:getLatestCRLResponse"/>
+  <xs:element name="getProfile" type="tns:getProfile"/>
+  <xs:element name="getProfileResponse" type="tns:getProfileResponse"/>
+  <xs:element name="getPublisherQueueLength" type="tns:getPublisherQueueLength"/>
+  <xs:element name="getPublisherQueueLengthResponse" type="tns:getPublisherQueueLengthResponse"/>
+  <xs:element name="isApproved" type="tns:isApproved"/>
+  <xs:element name="isApprovedResponse" type="tns:isApprovedResponse"/>
+  <xs:element name="isAuthorized" type="tns:isAuthorized"/>
+  <xs:element name="isAuthorizedResponse" type="tns:isAuthorizedResponse"/>
+  <xs:element name="keyRecover" type="tns:keyRecover"/>
+  <xs:element name="keyRecoverNewest" type="tns:keyRecoverNewest"/>
+  <xs:element name="keyRecoverNewestResponse" type="tns:keyRecoverNewestResponse"/>
+  <xs:element name="keyRecoverResponse" type="tns:keyRecoverResponse"/>
+  <xs:element name="pkcs10Request" type="tns:pkcs10Request"/>
+  <xs:element name="pkcs10RequestResponse" type="tns:pkcs10RequestResponse"/>
+  <xs:element name="pkcs12Req" type="tns:pkcs12Req"/>
+  <xs:element name="pkcs12ReqResponse" type="tns:pkcs12ReqResponse"/>
+  <xs:element name="removeSubjectFromRole" type="tns:removeSubjectFromRole"/>
+  <xs:element name="removeSubjectFromRoleResponse" type="tns:removeSubjectFromRoleResponse"/>
+  <xs:element name="republishCertificate" type="tns:republishCertificate"/>
+  <xs:element name="republishCertificateResponse" type="tns:republishCertificateResponse"/>
+  <xs:element name="revokeCert" type="tns:revokeCert"/>
+  <xs:element name="revokeCertBackdated" type="tns:revokeCertBackdated"/>
+  <xs:element name="revokeCertBackdatedResponse" type="tns:revokeCertBackdatedResponse"/>
+  <xs:element name="revokeCertResponse" type="tns:revokeCertResponse"/>
+  <xs:element name="revokeToken" type="tns:revokeToken"/>
+  <xs:element name="revokeTokenResponse" type="tns:revokeTokenResponse"/>
+  <xs:element name="revokeUser" type="tns:revokeUser"/>
+  <xs:element name="revokeUserResponse" type="tns:revokeUserResponse"/>
+  <xs:element name="softTokenRequest" type="tns:softTokenRequest"/>
+  <xs:element name="softTokenRequestResponse" type="tns:softTokenRequestResponse"/>
+  <xs:element name="spkacRequest" type="tns:spkacRequest"/>
+  <xs:element name="spkacRequestResponse" type="tns:spkacRequestResponse"/>
+  <xs:complexType name="getHardTokenData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:boolean"/>
+      <xs:element name="arg2" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getHardTokenDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:hardTokenDataWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="hardTokenDataWS">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="certificates" nillable="true" type="tns:certificate"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="copies" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="copyOfSN" type="xs:string"/>
+      <xs:element minOccurs="0" name="createTime" type="xs:dateTime"/>
+      <xs:element name="encKeyKeyRecoverable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="hardTokenSN" type="xs:string"/>
+      <xs:element minOccurs="0" name="label" type="xs:string"/>
+      <xs:element minOccurs="0" name="modifyTime" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pinDatas" nillable="true" type="tns:pinDataWS"/>
+      <xs:element name="tokenType" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificate">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenCertificateResponseWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="certificateData" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="tokenCertificateResponseWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certificate" type="tns:certificate"/>
+      <xs:element minOccurs="0" name="keyStore" type="tns:keyStore"/>
+      <xs:element name="type" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="keyStore">
+    <xs:complexContent>
+      <xs:extension base="tns:tokenCertificateResponseWS">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="keystoreData" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pinDataWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="initialPIN" type="xs:string"/>
+      <xs:element minOccurs="0" name="PUK" type="xs:string"/>
+      <xs:element name="type" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="errorCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="internalErrorCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProfile">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProfileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCryptoToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element name="arg3" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg4" type="tns:keyValuePair"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="keyValuePair">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="key" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCryptoTokenResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="crmfRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crmfRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="data" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="responseType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userMatch"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userMatch">
+    <xs:sequence>
+      <xs:element name="matchtype" type="xs:int"/>
+      <xs:element minOccurs="0" name="matchvalue" type="xs:string"/>
+      <xs:element name="matchwith" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findUserResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:userDataVOWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDataVOWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="caName" type="xs:string"/>
+      <xs:element minOccurs="0" name="cardNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateProfileName" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateSerialNumber" type="xs:integer"/>
+      <xs:element name="clearPwd" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="endEntityProfileName" type="xs:string"/>
+      <xs:element minOccurs="0" name="endTime" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="extendedInformation" nillable="true" type="tns:extendedInformationWS"/>
+      <xs:element minOccurs="0" name="hardTokenIssuerName" type="xs:string"/>
+      <xs:element name="keyRecoverable" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+      <xs:element name="sendNotification" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="startTime" type="xs:string"/>
+      <xs:element name="status" type="xs:int"/>
+      <xs:element minOccurs="0" name="subjectAltName" type="xs:string"/>
+      <xs:element minOccurs="0" name="subjectDN" type="xs:string"/>
+      <xs:element minOccurs="0" name="tokenType" type="xs:string"/>
+      <xs:element minOccurs="0" name="username" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="extendedInformationWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="genTokenCertificates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDataVOWS"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg1" type="tns:tokenCertificateRequestWS"/>
+      <xs:element minOccurs="0" name="arg2" type="tns:hardTokenDataWS"/>
+      <xs:element name="arg3" type="xs:boolean"/>
+      <xs:element name="arg4" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tokenCertificateRequestWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CAName" type="xs:string"/>
+      <xs:element minOccurs="0" name="certificateProfileName" type="xs:string"/>
+      <xs:element minOccurs="0" name="keyalg" type="xs:string"/>
+      <xs:element minOccurs="0" name="keyspec" type="xs:string"/>
+      <xs:element minOccurs="0" name="pkcs10Data" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="tokenType" type="xs:string"/>
+      <xs:element name="type" type="xs:int"/>
+      <xs:element minOccurs="0" name="validityIdDays" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="genTokenCertificatesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:tokenCertificateResponseWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTimeAndType">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:int"/>
+      <xs:element name="arg2" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTimeAndTypeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeCertBackdated">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeCertBackdatedResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="checkRevokationStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="checkRevokationStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:revokeStatus"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certificateSN" type="xs:string"/>
+      <xs:element minOccurs="0" name="issuerDN" type="xs:string"/>
+      <xs:element name="reason" type="xs:int"/>
+      <xs:element minOccurs="0" name="revocationDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generateCryptoTokenKeys">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="generateCryptoTokenKeysResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="keyRecoverNewest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="keyRecoverNewestResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="editUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDataVOWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="editUserResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="spkacRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="spkacRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLastCAChain">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLastCAChainResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addSubjectToRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addSubjectToRoleResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="findCerts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCertsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteUserDataFromSource">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteUserDataFromSourceResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificateRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDataVOWS"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificateRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customLog">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="tns:certificate"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customLogResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getEjbcaVersion">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getEjbcaVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAuthorizedEndEntityProfiles">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAuthorizedEndEntityProfilesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:nameAndId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nameAndId">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="existsHardToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="existsHardTokenResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isAuthorized">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isAuthorizedResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cvcRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cvcRequestResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="republishCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="republishCertificateResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="caCertResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:base64Binary"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg2" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="caCertResponseResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="createCRL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCRLResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCAsInProfile">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCAsInProfileResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:nameAndId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pkcs12Req">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pkcs12ReqResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:keyStore"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="keyRecover">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="keyRecoverResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="caRenewCertRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg1" type="xs:base64Binary"/>
+      <xs:element name="arg2" type="xs:boolean"/>
+      <xs:element name="arg3" type="xs:boolean"/>
+      <xs:element name="arg4" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="caRenewCertRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fetchUserData">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fetchUserDataResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:userDataSourceVOWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userDataSourceVOWS">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="isModifyable" nillable="true" type="xs:int"/>
+      <xs:element minOccurs="0" name="userDataVOWS" type="tns:userDataVOWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pkcs10Request">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pkcs10RequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificateResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getHardTokenDatas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:boolean"/>
+      <xs:element name="arg2" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getHardTokenDatasResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:hardTokenDataWS"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeTokenResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="softTokenRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:userDataVOWS"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="softTokenRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:keyStore"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLatestCRL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLatestCRLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSubjectFromRole">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="removeSubjectFromRoleResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCAs">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCAsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:nameAndId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTimeAndIssuer">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTimeAndIssuerResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLastCertChain">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getLastCertChainResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTime">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificatesByExpirationTimeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCertificateProfiles">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAvailableCertificateProfilesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:nameAndId"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element name="arg3" type="xs:long"/>
+      <xs:element minOccurs="0" name="arg4" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg5" type="xs:string"/>
+      <xs:element name="arg6" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg7" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg8" type="tns:keyValuePair"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg9" type="tns:keyValuePair"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createCAResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="isApproved">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isApprovedResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:int"/>
+      <xs:element name="arg2" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeUserResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="revokeCert">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revokeCertResponse">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCertificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPublisherQueueLength">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getPublisherQueueLengthResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NotFoundException" type="tns:NotFoundException"/>
+  <xs:complexType name="NotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HardTokenDoesntExistsException" type="tns:HardTokenDoesntExistsException"/>
+  <xs:complexType name="HardTokenDoesntExistsException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApprovalRequestExpiredException" type="tns:ApprovalRequestExpiredException"/>
+  <xs:complexType name="ApprovalRequestExpiredException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CADoesntExistsException" type="tns:CADoesntExistsException"/>
+  <xs:complexType name="CADoesntExistsException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthorizationDeniedException" type="tns:AuthorizationDeniedException"/>
+  <xs:complexType name="AuthorizationDeniedException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApprovalRequestExecutionException" type="tns:ApprovalRequestExecutionException"/>
+  <xs:complexType name="ApprovalRequestExecutionException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EjbcaException" type="tns:EjbcaException"/>
+  <xs:complexType name="EjbcaException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WaitingForApprovalException" type="tns:WaitingForApprovalException"/>
+  <xs:complexType name="WaitingForApprovalException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="approvalId" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnknownProfileTypeException" type="tns:UnknownProfileTypeException"/>
+  <xs:complexType name="UnknownProfileTypeException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CesecoreException" type="tns:CesecoreException"/>
+  <xs:complexType name="CesecoreException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EndEntityProfileNotFoundException" type="tns:EndEntityProfileNotFoundException"/>
+  <xs:complexType name="EndEntityProfileNotFoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IllegalQueryException" type="tns:IllegalQueryException"/>
+  <xs:complexType name="IllegalQueryException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HardTokenExistsException" type="tns:HardTokenExistsException"/>
+  <xs:complexType name="HardTokenExistsException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDoesntFullfillEndEntityProfile" type="tns:UserDoesntFullfillEndEntityProfile"/>
+  <xs:complexType name="UserDoesntFullfillEndEntityProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApprovalException" type="tns:ApprovalException"/>
+  <xs:complexType name="ApprovalException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AlreadyRevokedException" type="tns:AlreadyRevokedException"/>
+  <xs:complexType name="AlreadyRevokedException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RevokeBackDateNotAllowedForProfileException" type="tns:RevokeBackDateNotAllowedForProfileException"/>
+  <xs:complexType name="RevokeBackDateNotAllowedForProfileException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateNotValidException" type="tns:DateNotValidException"/>
+  <xs:complexType name="DateNotValidException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MultipleMatchException" type="tns:MultipleMatchException"/>
+  <xs:complexType name="MultipleMatchException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDataSourceException" type="tns:UserDataSourceException"/>
+  <xs:complexType name="UserDataSourceException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignRequestException" type="tns:SignRequestException"/>
+  <xs:complexType name="SignRequestException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CertificateExpiredException" type="tns:CertificateExpiredException"/>
+  <xs:complexType name="CertificateExpiredException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PublisherException" type="tns:PublisherException"/>
+  <xs:complexType name="PublisherException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CAOfflineException" type="tns:CAOfflineException"/>
+  <xs:complexType name="CAOfflineException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CryptoTokenOfflineException" type="tns:CryptoTokenOfflineException"/>
+  <xs:complexType name="CryptoTokenOfflineException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="tns:errorCode"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="RevokeBackDateNotAllowedForProfileException">
+    <wsdl:part element="tns:RevokeBackDateNotAllowedForProfileException" name="RevokeBackDateNotAllowedForProfileException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfile">
+    <wsdl:part element="tns:getProfile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="caCertResponseResponse">
+    <wsdl:part element="tns:caCertResponseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="caRenewCertRequestResponse">
+    <wsdl:part element="tns:caRenewCertRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLatestCRLResponse">
+    <wsdl:part element="tns:getLatestCRLResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApprovalRequestExecutionException">
+    <wsdl:part element="tns:ApprovalRequestExecutionException" name="ApprovalRequestExecutionException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EjbcaException">
+    <wsdl:part element="tns:EjbcaException" name="EjbcaException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastCertChainResponse">
+    <wsdl:part element="tns:getLastCertChainResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isApprovedResponse">
+    <wsdl:part element="tns:isApprovedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTimeAndIssuerResponse">
+    <wsdl:part element="tns:getCertificatesByExpirationTimeAndIssuerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cvcRequestResponse">
+    <wsdl:part element="tns:cvcRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genTokenCertificates">
+    <wsdl:part element="tns:genTokenCertificates" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="keyRecoverNewestResponse">
+    <wsdl:part element="tns:keyRecoverNewestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="keyRecoverNewest">
+    <wsdl:part element="tns:keyRecoverNewest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="spkacRequest">
+    <wsdl:part element="tns:spkacRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="softTokenRequestResponse">
+    <wsdl:part element="tns:softTokenRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CADoesntExistsException">
+    <wsdl:part element="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editUserResponse">
+    <wsdl:part element="tns:editUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteUserDataFromSource">
+    <wsdl:part element="tns:deleteUserDataFromSource" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkRevokationStatusResponse">
+    <wsdl:part element="tns:checkRevokationStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCAsResponse">
+    <wsdl:part element="tns:getAvailableCAsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="spkacRequestResponse">
+    <wsdl:part element="tns:spkacRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="customLog">
+    <wsdl:part element="tns:customLog" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HardTokenDoesntExistsException">
+    <wsdl:part element="tns:HardTokenDoesntExistsException" name="HardTokenDoesntExistsException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="caCertResponse">
+    <wsdl:part element="tns:caCertResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CAOfflineException">
+    <wsdl:part element="tns:CAOfflineException" name="CAOfflineException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastCAChainResponse">
+    <wsdl:part element="tns:getLastCAChainResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCAsInProfile">
+    <wsdl:part element="tns:getAvailableCAsInProfile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSubjectToRoleResponse">
+    <wsdl:part element="tns:addSubjectToRoleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="existsHardTokenResponse">
+    <wsdl:part element="tns:existsHardTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crmfRequestResponse">
+    <wsdl:part element="tns:crmfRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificateResponse">
+    <wsdl:part element="tns:getCertificateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CryptoTokenOfflineException">
+    <wsdl:part element="tns:CryptoTokenOfflineException" name="CryptoTokenOfflineException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPublisherQueueLengthResponse">
+    <wsdl:part element="tns:getPublisherQueueLengthResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeToken">
+    <wsdl:part element="tns:revokeToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="softTokenRequest">
+    <wsdl:part element="tns:softTokenRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="NotFoundException">
+    <wsdl:part element="tns:NotFoundException" name="NotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSubjectFromRole">
+    <wsdl:part element="tns:removeSubjectFromRole" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserDataSourceException">
+    <wsdl:part element="tns:UserDataSourceException" name="UserDataSourceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEjbcaVersionResponse">
+    <wsdl:part element="tns:getEjbcaVersionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DateNotValidException">
+    <wsdl:part element="tns:DateNotValidException" name="DateNotValidException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastCertChain">
+    <wsdl:part element="tns:getLastCertChain" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTime">
+    <wsdl:part element="tns:getCertificatesByExpirationTime" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHardTokenDataResponse">
+    <wsdl:part element="tns:getHardTokenDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCRLResponse">
+    <wsdl:part element="tns:createCRLResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCAsInProfileResponse">
+    <wsdl:part element="tns:getAvailableCAsInProfileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteUserDataFromSourceResponse">
+    <wsdl:part element="tns:deleteUserDataFromSourceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isApproved">
+    <wsdl:part element="tns:isApproved" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthorizationDeniedException">
+    <wsdl:part element="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeCert">
+    <wsdl:part element="tns:revokeCert" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificate">
+    <wsdl:part element="tns:getCertificate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPublisherQueueLength">
+    <wsdl:part element="tns:getPublisherQueueLength" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHardTokenData">
+    <wsdl:part element="tns:getHardTokenData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IllegalQueryException">
+    <wsdl:part element="tns:IllegalQueryException" name="IllegalQueryException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedEndEntityProfilesResponse">
+    <wsdl:part element="tns:getAuthorizedEndEntityProfilesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCryptoToken">
+    <wsdl:part element="tns:createCryptoToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="crmfRequest">
+    <wsdl:part element="tns:crmfRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeUserResponse">
+    <wsdl:part element="tns:revokeUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUser">
+    <wsdl:part element="tns:findUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AlreadyRevokedException">
+    <wsdl:part element="tns:AlreadyRevokedException" name="AlreadyRevokedException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="keyRecoverResponse">
+    <wsdl:part element="tns:keyRecoverResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTimeAndType">
+    <wsdl:part element="tns:getCertificatesByExpirationTimeAndType" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeCertBackdated">
+    <wsdl:part element="tns:revokeCertBackdated" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isAuthorizedResponse">
+    <wsdl:part element="tns:isAuthorizedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkRevokationStatus">
+    <wsdl:part element="tns:checkRevokationStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fetchUserDataResponse">
+    <wsdl:part element="tns:fetchUserDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTimeResponse">
+    <wsdl:part element="tns:getCertificatesByExpirationTimeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateCryptoTokenKeys">
+    <wsdl:part element="tns:generateCryptoTokenKeys" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="editUser">
+    <wsdl:part element="tns:editUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SignRequestException">
+    <wsdl:part element="tns:SignRequestException" name="SignRequestException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLastCAChain">
+    <wsdl:part element="tns:getLastCAChain" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UserDoesntFullfillEndEntityProfile">
+    <wsdl:part element="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCertificateProfilesResponse">
+    <wsdl:part element="tns:getAvailableCertificateProfilesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSubjectToRole">
+    <wsdl:part element="tns:addSubjectToRole" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="PublisherException">
+    <wsdl:part element="tns:PublisherException" name="PublisherException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeCertBackdatedResponse">
+    <wsdl:part element="tns:revokeCertBackdatedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCerts">
+    <wsdl:part element="tns:findCerts" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="certificateRequest">
+    <wsdl:part element="tns:certificateRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EndEntityProfileNotFoundException">
+    <wsdl:part element="tns:EndEntityProfileNotFoundException" name="EndEntityProfileNotFoundException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MultipleMatchException">
+    <wsdl:part element="tns:MultipleMatchException" name="MultipleMatchException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEjbcaVersion">
+    <wsdl:part element="tns:getEjbcaVersion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAuthorizedEndEntityProfiles">
+    <wsdl:part element="tns:getAuthorizedEndEntityProfiles" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCAResponse">
+    <wsdl:part element="tns:createCAResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateCryptoTokenKeysResponse">
+    <wsdl:part element="tns:generateCryptoTokenKeysResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="existsHardToken">
+    <wsdl:part element="tns:existsHardToken" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="genTokenCertificatesResponse">
+    <wsdl:part element="tns:genTokenCertificatesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="isAuthorized">
+    <wsdl:part element="tns:isAuthorized" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cvcRequest">
+    <wsdl:part element="tns:cvcRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="republishCertificate">
+    <wsdl:part element="tns:republishCertificate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCRL">
+    <wsdl:part element="tns:createCRL" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeCertResponse">
+    <wsdl:part element="tns:revokeCertResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pkcs12Req">
+    <wsdl:part element="tns:pkcs12Req" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCryptoTokenResponse">
+    <wsdl:part element="tns:createCryptoTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="republishCertificateResponse">
+    <wsdl:part element="tns:republishCertificateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApprovalException">
+    <wsdl:part element="tns:ApprovalException" name="ApprovalException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="certificateRequestResponse">
+    <wsdl:part element="tns:certificateRequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="keyRecover">
+    <wsdl:part element="tns:keyRecover" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="caRenewCertRequest">
+    <wsdl:part element="tns:caRenewCertRequest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeSubjectFromRoleResponse">
+    <wsdl:part element="tns:removeSubjectFromRoleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApprovalRequestExpiredException">
+    <wsdl:part element="tns:ApprovalRequestExpiredException" name="ApprovalRequestExpiredException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fetchUserData">
+    <wsdl:part element="tns:fetchUserData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pkcs10Request">
+    <wsdl:part element="tns:pkcs10Request" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HardTokenExistsException">
+    <wsdl:part element="tns:HardTokenExistsException" name="HardTokenExistsException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHardTokenDatas">
+    <wsdl:part element="tns:getHardTokenDatas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pkcs10RequestResponse">
+    <wsdl:part element="tns:pkcs10RequestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLatestCRL">
+    <wsdl:part element="tns:getLatestCRL" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WaitingForApprovalException">
+    <wsdl:part element="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeTokenResponse">
+    <wsdl:part element="tns:revokeTokenResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCertsResponse">
+    <wsdl:part element="tns:findCertsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCAs">
+    <wsdl:part element="tns:getAvailableCAs" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTimeAndIssuer">
+    <wsdl:part element="tns:getCertificatesByExpirationTimeAndIssuer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="customLogResponse">
+    <wsdl:part element="tns:customLogResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHardTokenDatasResponse">
+    <wsdl:part element="tns:getHardTokenDatasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCertificatesByExpirationTimeAndTypeResponse">
+    <wsdl:part element="tns:getCertificatesByExpirationTimeAndTypeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProfileResponse">
+    <wsdl:part element="tns:getProfileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UnknownProfileTypeException">
+    <wsdl:part element="tns:UnknownProfileTypeException" name="UnknownProfileTypeException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CesecoreException">
+    <wsdl:part element="tns:CesecoreException" name="CesecoreException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CertificateExpiredException">
+    <wsdl:part element="tns:CertificateExpiredException" name="CertificateExpiredException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailableCertificateProfiles">
+    <wsdl:part element="tns:getAvailableCertificateProfiles" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCA">
+    <wsdl:part element="tns:createCA" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="pkcs12ReqResponse">
+    <wsdl:part element="tns:pkcs12ReqResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findUserResponse">
+    <wsdl:part element="tns:findUserResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeUser">
+    <wsdl:part element="tns:revokeUser" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EjbcaWS">
+    <wsdl:operation name="getHardTokenData">
+      <wsdl:input message="tns:getHardTokenData" name="getHardTokenData">
+    </wsdl:input>
+      <wsdl:output message="tns:getHardTokenDataResponse" name="getHardTokenDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExecutionException" name="ApprovalRequestExecutionException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:HardTokenDoesntExistsException" name="HardTokenDoesntExistsException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExpiredException" name="ApprovalRequestExpiredException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <wsdl:input message="tns:getProfile" name="getProfile">
+    </wsdl:input>
+      <wsdl:output message="tns:getProfileResponse" name="getProfileResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UnknownProfileTypeException" name="UnknownProfileTypeException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCryptoToken">
+      <wsdl:input message="tns:createCryptoToken" name="createCryptoToken">
+    </wsdl:input>
+      <wsdl:output message="tns:createCryptoTokenResponse" name="createCryptoTokenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crmfRequest">
+      <wsdl:input message="tns:crmfRequest" name="crmfRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:crmfRequestResponse" name="crmfRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CesecoreException" name="CesecoreException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <wsdl:input message="tns:findUser" name="findUser">
+    </wsdl:input>
+      <wsdl:output message="tns:findUserResponse" name="findUserResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EndEntityProfileNotFoundException" name="EndEntityProfileNotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:IllegalQueryException" name="IllegalQueryException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="genTokenCertificates">
+      <wsdl:input message="tns:genTokenCertificates" name="genTokenCertificates">
+    </wsdl:input>
+      <wsdl:output message="tns:genTokenCertificatesResponse" name="genTokenCertificatesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:HardTokenExistsException" name="HardTokenExistsException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExecutionException" name="ApprovalRequestExecutionException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExpiredException" name="ApprovalRequestExpiredException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTimeAndType">
+      <wsdl:input message="tns:getCertificatesByExpirationTimeAndType" name="getCertificatesByExpirationTimeAndType">
+    </wsdl:input>
+      <wsdl:output message="tns:getCertificatesByExpirationTimeAndTypeResponse" name="getCertificatesByExpirationTimeAndTypeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeCertBackdated">
+      <wsdl:input message="tns:revokeCertBackdated" name="revokeCertBackdated">
+    </wsdl:input>
+      <wsdl:output message="tns:revokeCertBackdatedResponse" name="revokeCertBackdatedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:DateNotValidException" name="DateNotValidException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AlreadyRevokedException" name="AlreadyRevokedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:RevokeBackDateNotAllowedForProfileException" name="RevokeBackDateNotAllowedForProfileException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkRevokationStatus">
+      <wsdl:input message="tns:checkRevokationStatus" name="checkRevokationStatus">
+    </wsdl:input>
+      <wsdl:output message="tns:checkRevokationStatusResponse" name="checkRevokationStatusResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateCryptoTokenKeys">
+      <wsdl:input message="tns:generateCryptoTokenKeys" name="generateCryptoTokenKeys">
+    </wsdl:input>
+      <wsdl:output message="tns:generateCryptoTokenKeysResponse" name="generateCryptoTokenKeysResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="keyRecoverNewest">
+      <wsdl:input message="tns:keyRecoverNewest" name="keyRecoverNewest">
+    </wsdl:input>
+      <wsdl:output message="tns:keyRecoverNewestResponse" name="keyRecoverNewestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="editUser">
+      <wsdl:input message="tns:editUser" name="editUser">
+    </wsdl:input>
+      <wsdl:output message="tns:editUserResponse" name="editUserResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="spkacRequest">
+      <wsdl:input message="tns:spkacRequest" name="spkacRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:spkacRequestResponse" name="spkacRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CesecoreException" name="CesecoreException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLastCAChain">
+      <wsdl:input message="tns:getLastCAChain" name="getLastCAChain">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastCAChainResponse" name="getLastCAChainResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSubjectToRole">
+      <wsdl:input message="tns:addSubjectToRole" name="addSubjectToRole">
+    </wsdl:input>
+      <wsdl:output message="tns:addSubjectToRoleResponse" name="addSubjectToRoleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCerts">
+      <wsdl:input message="tns:findCerts" name="findCerts">
+    </wsdl:input>
+      <wsdl:output message="tns:findCertsResponse" name="findCertsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUserDataFromSource">
+      <wsdl:input message="tns:deleteUserDataFromSource" name="deleteUserDataFromSource">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteUserDataFromSourceResponse" name="deleteUserDataFromSourceResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:MultipleMatchException" name="MultipleMatchException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDataSourceException" name="UserDataSourceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="certificateRequest">
+      <wsdl:input message="tns:certificateRequest" name="certificateRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:certificateRequestResponse" name="certificateRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="customLog">
+      <wsdl:input message="tns:customLog" name="customLog">
+    </wsdl:input>
+      <wsdl:output message="tns:customLogResponse" name="customLogResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEjbcaVersion">
+      <wsdl:input message="tns:getEjbcaVersion" name="getEjbcaVersion">
+    </wsdl:input>
+      <wsdl:output message="tns:getEjbcaVersionResponse" name="getEjbcaVersionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedEndEntityProfiles">
+      <wsdl:input message="tns:getAuthorizedEndEntityProfiles" name="getAuthorizedEndEntityProfiles">
+    </wsdl:input>
+      <wsdl:output message="tns:getAuthorizedEndEntityProfilesResponse" name="getAuthorizedEndEntityProfilesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="existsHardToken">
+      <wsdl:input message="tns:existsHardToken" name="existsHardToken">
+    </wsdl:input>
+      <wsdl:output message="tns:existsHardTokenResponse" name="existsHardTokenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <wsdl:input message="tns:isAuthorized" name="isAuthorized">
+    </wsdl:input>
+      <wsdl:output message="tns:isAuthorizedResponse" name="isAuthorizedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cvcRequest">
+      <wsdl:input message="tns:cvcRequest" name="cvcRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cvcRequestResponse" name="cvcRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CesecoreException" name="CesecoreException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CertificateExpiredException" name="CertificateExpiredException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:SignRequestException" name="SignRequestException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="republishCertificate">
+      <wsdl:input message="tns:republishCertificate" name="republishCertificate">
+    </wsdl:input>
+      <wsdl:output message="tns:republishCertificateResponse" name="republishCertificateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:PublisherException" name="PublisherException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="caCertResponse">
+      <wsdl:input message="tns:caCertResponse" name="caCertResponse">
+    </wsdl:input>
+      <wsdl:output message="tns:caCertResponseResponse" name="caCertResponseResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CesecoreException" name="CesecoreException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCRL">
+      <wsdl:input message="tns:createCRL" name="createCRL">
+    </wsdl:input>
+      <wsdl:output message="tns:createCRLResponse" name="createCRLResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CryptoTokenOfflineException" name="CryptoTokenOfflineException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CAOfflineException" name="CAOfflineException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExpiredException" name="ApprovalRequestExpiredException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCAsInProfile">
+      <wsdl:input message="tns:getAvailableCAsInProfile" name="getAvailableCAsInProfile">
+    </wsdl:input>
+      <wsdl:output message="tns:getAvailableCAsInProfileResponse" name="getAvailableCAsInProfileResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pkcs12Req">
+      <wsdl:input message="tns:pkcs12Req" name="pkcs12Req">
+    </wsdl:input>
+      <wsdl:output message="tns:pkcs12ReqResponse" name="pkcs12ReqResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="keyRecover">
+      <wsdl:input message="tns:keyRecover" name="keyRecover">
+    </wsdl:input>
+      <wsdl:output message="tns:keyRecoverResponse" name="keyRecoverResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="caRenewCertRequest">
+      <wsdl:input message="tns:caRenewCertRequest" name="caRenewCertRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:caRenewCertRequestResponse" name="caRenewCertRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fetchUserData">
+      <wsdl:input message="tns:fetchUserData" name="fetchUserData">
+    </wsdl:input>
+      <wsdl:output message="tns:fetchUserDataResponse" name="fetchUserDataResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDataSourceException" name="UserDataSourceException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pkcs10Request">
+      <wsdl:input message="tns:pkcs10Request" name="pkcs10Request">
+    </wsdl:input>
+      <wsdl:output message="tns:pkcs10RequestResponse" name="pkcs10RequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CesecoreException" name="CesecoreException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getHardTokenDatas">
+      <wsdl:input message="tns:getHardTokenDatas" name="getHardTokenDatas">
+    </wsdl:input>
+      <wsdl:output message="tns:getHardTokenDatasResponse" name="getHardTokenDatasResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeToken">
+      <wsdl:input message="tns:revokeToken" name="revokeToken">
+    </wsdl:input>
+      <wsdl:output message="tns:revokeTokenResponse" name="revokeTokenResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AlreadyRevokedException" name="AlreadyRevokedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="softTokenRequest">
+      <wsdl:input message="tns:softTokenRequest" name="softTokenRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:softTokenRequestResponse" name="softTokenRequestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:UserDoesntFullfillEndEntityProfile" name="UserDoesntFullfillEndEntityProfile">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestCRL">
+      <wsdl:input message="tns:getLatestCRL" name="getLatestCRL">
+    </wsdl:input>
+      <wsdl:output message="tns:getLatestCRLResponse" name="getLatestCRLResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSubjectFromRole">
+      <wsdl:input message="tns:removeSubjectFromRole" name="removeSubjectFromRole">
+    </wsdl:input>
+      <wsdl:output message="tns:removeSubjectFromRoleResponse" name="removeSubjectFromRoleResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCAs">
+      <wsdl:input message="tns:getAvailableCAs" name="getAvailableCAs">
+    </wsdl:input>
+      <wsdl:output message="tns:getAvailableCAsResponse" name="getAvailableCAsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTimeAndIssuer">
+      <wsdl:input message="tns:getCertificatesByExpirationTimeAndIssuer" name="getCertificatesByExpirationTimeAndIssuer">
+    </wsdl:input>
+      <wsdl:output message="tns:getCertificatesByExpirationTimeAndIssuerResponse" name="getCertificatesByExpirationTimeAndIssuerResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLastCertChain">
+      <wsdl:input message="tns:getLastCertChain" name="getLastCertChain">
+    </wsdl:input>
+      <wsdl:output message="tns:getLastCertChainResponse" name="getLastCertChainResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTime">
+      <wsdl:input message="tns:getCertificatesByExpirationTime" name="getCertificatesByExpirationTime">
+    </wsdl:input>
+      <wsdl:output message="tns:getCertificatesByExpirationTimeResponse" name="getCertificatesByExpirationTimeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCertificateProfiles">
+      <wsdl:input message="tns:getAvailableCertificateProfiles" name="getAvailableCertificateProfiles">
+    </wsdl:input>
+      <wsdl:output message="tns:getAvailableCertificateProfilesResponse" name="getAvailableCertificateProfilesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCA">
+      <wsdl:input message="tns:createCA" name="createCA">
+    </wsdl:input>
+      <wsdl:output message="tns:createCAResponse" name="createCAResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isApproved">
+      <wsdl:input message="tns:isApproved" name="isApproved">
+    </wsdl:input>
+      <wsdl:output message="tns:isApprovedResponse" name="isApprovedResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:ApprovalRequestExpiredException" name="ApprovalRequestExpiredException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeUser">
+      <wsdl:input message="tns:revokeUser" name="revokeUser">
+    </wsdl:input>
+      <wsdl:output message="tns:revokeUserResponse" name="revokeUserResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AlreadyRevokedException" name="AlreadyRevokedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeCert">
+      <wsdl:input message="tns:revokeCert" name="revokeCert">
+    </wsdl:input>
+      <wsdl:output message="tns:revokeCertResponse" name="revokeCertResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:ApprovalException" name="ApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:WaitingForApprovalException" name="WaitingForApprovalException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:AlreadyRevokedException" name="AlreadyRevokedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificate">
+      <wsdl:input message="tns:getCertificate" name="getCertificate">
+    </wsdl:input>
+      <wsdl:output message="tns:getCertificateResponse" name="getCertificateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:AuthorizationDeniedException" name="AuthorizationDeniedException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+      <wsdl:fault message="tns:CADoesntExistsException" name="CADoesntExistsException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPublisherQueueLength">
+      <wsdl:input message="tns:getPublisherQueueLength" name="getPublisherQueueLength">
+    </wsdl:input>
+      <wsdl:output message="tns:getPublisherQueueLengthResponse" name="getPublisherQueueLengthResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:EjbcaException" name="EjbcaException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EjbcaWSServiceSoapBinding" type="tns:EjbcaWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHardTokenData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getHardTokenData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getHardTokenDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExecutionException">
+        <soap:fault name="ApprovalRequestExecutionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="HardTokenDoesntExistsException">
+        <soap:fault name="HardTokenDoesntExistsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExpiredException">
+        <soap:fault name="ApprovalRequestExpiredException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getProfile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getProfile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProfileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnknownProfileTypeException">
+        <soap:fault name="UnknownProfileTypeException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCryptoToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCryptoToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCryptoTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="crmfRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="crmfRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crmfRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CesecoreException">
+        <soap:fault name="CesecoreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EndEntityProfileNotFoundException">
+        <soap:fault name="EndEntityProfileNotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="IllegalQueryException">
+        <soap:fault name="IllegalQueryException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="genTokenCertificates">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="genTokenCertificates">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="genTokenCertificatesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="HardTokenExistsException">
+        <soap:fault name="HardTokenExistsException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDoesntFullfillEndEntityProfile">
+        <soap:fault name="UserDoesntFullfillEndEntityProfile" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExecutionException">
+        <soap:fault name="ApprovalRequestExecutionException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExpiredException">
+        <soap:fault name="ApprovalRequestExpiredException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTimeAndType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCertificatesByExpirationTimeAndType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCertificatesByExpirationTimeAndTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeCertBackdated">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revokeCertBackdated">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revokeCertBackdatedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DateNotValidException">
+        <soap:fault name="DateNotValidException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyRevokedException">
+        <soap:fault name="AlreadyRevokedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RevokeBackDateNotAllowedForProfileException">
+        <soap:fault name="RevokeBackDateNotAllowedForProfileException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkRevokationStatus">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="checkRevokationStatus">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkRevokationStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="generateCryptoTokenKeys">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateCryptoTokenKeys">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateCryptoTokenKeysResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="keyRecoverNewest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="keyRecoverNewest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="keyRecoverNewestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="editUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="editUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="editUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDoesntFullfillEndEntityProfile">
+        <soap:fault name="UserDoesntFullfillEndEntityProfile" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="spkacRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="spkacRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="spkacRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CesecoreException">
+        <soap:fault name="CesecoreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLastCAChain">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastCAChain">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastCAChainResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="addSubjectToRole">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addSubjectToRole">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSubjectToRoleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUserDataFromSource">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteUserDataFromSource">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteUserDataFromSourceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MultipleMatchException">
+        <soap:fault name="MultipleMatchException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDataSourceException">
+        <soap:fault name="UserDataSourceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCerts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCerts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCertsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="certificateRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="certificateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="certificateRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDoesntFullfillEndEntityProfile">
+        <soap:fault name="UserDoesntFullfillEndEntityProfile" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="customLog">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="customLog">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="customLogResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEjbcaVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEjbcaVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEjbcaVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAuthorizedEndEntityProfiles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAuthorizedEndEntityProfiles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAuthorizedEndEntityProfilesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="existsHardToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="existsHardToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="existsHardTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cvcRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cvcRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cvcRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDoesntFullfillEndEntityProfile">
+        <soap:fault name="UserDoesntFullfillEndEntityProfile" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CesecoreException">
+        <soap:fault name="CesecoreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CertificateExpiredException">
+        <soap:fault name="CertificateExpiredException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="SignRequestException">
+        <soap:fault name="SignRequestException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthorized">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isAuthorized">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isAuthorizedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="republishCertificate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="republishCertificate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="republishCertificateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PublisherException">
+        <soap:fault name="PublisherException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="caCertResponse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="caCertResponse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="caCertResponseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CesecoreException">
+        <soap:fault name="CesecoreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCRL">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCRL">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCRLResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CryptoTokenOfflineException">
+        <soap:fault name="CryptoTokenOfflineException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CAOfflineException">
+        <soap:fault name="CAOfflineException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExpiredException">
+        <soap:fault name="ApprovalRequestExpiredException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCAsInProfile">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAvailableCAsInProfile">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableCAsInProfileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pkcs12Req">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pkcs12Req">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pkcs12ReqResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="keyRecover">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="keyRecover">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="keyRecoverResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="caRenewCertRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="caRenewCertRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="caRenewCertRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fetchUserData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="fetchUserData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fetchUserDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDataSourceException">
+        <soap:fault name="UserDataSourceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="pkcs10Request">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="pkcs10Request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pkcs10RequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CesecoreException">
+        <soap:fault name="CesecoreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getHardTokenDatas">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getHardTokenDatas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getHardTokenDatasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeToken">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revokeToken">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revokeTokenResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyRevokedException">
+        <soap:fault name="AlreadyRevokedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="softTokenRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="softTokenRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="softTokenRequestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UserDoesntFullfillEndEntityProfile">
+        <soap:fault name="UserDoesntFullfillEndEntityProfile" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestCRL">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLatestCRL">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLatestCRLResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeSubjectFromRole">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeSubjectFromRole">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeSubjectFromRoleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCAs">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAvailableCAs">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableCAsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTimeAndIssuer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCertificatesByExpirationTimeAndIssuer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCertificatesByExpirationTimeAndIssuerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLastCertChain">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getLastCertChain">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLastCertChainResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificatesByExpirationTime">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCertificatesByExpirationTime">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCertificatesByExpirationTimeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableCertificateProfiles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAvailableCertificateProfiles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableCertificateProfilesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCA">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createCA">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCAResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isApproved">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="isApproved">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isApprovedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ApprovalRequestExpiredException">
+        <soap:fault name="ApprovalRequestExpiredException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revokeUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revokeUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyRevokedException">
+        <soap:fault name="AlreadyRevokedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="revokeCert">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revokeCert">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revokeCertResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApprovalException">
+        <soap:fault name="ApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WaitingForApprovalException">
+        <soap:fault name="WaitingForApprovalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyRevokedException">
+        <soap:fault name="AlreadyRevokedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCertificate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCertificate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCertificateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationDeniedException">
+        <soap:fault name="AuthorizationDeniedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="CADoesntExistsException">
+        <soap:fault name="CADoesntExistsException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPublisherQueueLength">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPublisherQueueLength">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPublisherQueueLengthResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="EjbcaException">
+        <soap:fault name="EjbcaException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EjbcaWSService">
+    <wsdl:port binding="tns:EjbcaWSServiceSoapBinding" name="EjbcaWSPort">
+      <soap:address location="https://localhost:8443/ejbca/ejbcaws/ejbcaws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
