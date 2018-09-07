@@ -85,11 +85,12 @@ more detailed information about each section.
 
 ### Intune configuration
 Section (**intune:**) containing configuration needed in order to connect to Intune service.
+Values for `appId` and `appKey` should be specified as noted in step 1 in _Setup Guide_ above.
 
 | Key    | Description
 | ------ | -----------
-| tenant | Intune tenant to use.
-| appId  | Application ID from Azure AD (See section Setup Guide).
+| tenant | Intune tenant to use _(ex. johnnycash.onmicrosoft.com)_.
+| appId  | Application ID from Azure.
 | appKey | API key to use when authenticating to cloud service.
 
 ### EJBCA configuration
@@ -97,7 +98,7 @@ Section (**ejbca:**) containing configuration needed in order to connect to EJBC
 
 | Key              | Description
 | ---------------- | -----------
-| serviceName      | Arbitrary name and version of EJBCA service.
+| serviceName      | Arbitrary name and version of EJBCA service _(ex. EJBCA 6.3.1.1)_.
 | serviceUrl       | EJBCA web service endpoint URL.
 | keystorePath     | Path to java key store containing administrator certificate to use when authenticating to EJBCA web service.
 | keystorePassword | Password that protects the keystore and the private key.
