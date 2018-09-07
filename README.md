@@ -34,8 +34,9 @@ through Microsoft Intune and certificate enrollment through EJBCA.
 5.  Deploy `intune-ejbca-connector.war` in to *webapps* directory
     of the Tomcat server and start/restart the application server.
     
-    **NOTE:** Verify that application as started successfully by opening http://localhost:8080/intune-ejbca-connector
-    in a browser. It should say *Ready to serve!* if everything seems OK.
+    **NOTE:** Verify that application as started successfully by opening *https://`<hostname>`/intune-ejbca-connector*
+    in a browser, assuming a connector has been configured on port 443. It should say *Ready to serve!* if everything seems OK, 
+    otherwise wiew the logfile.
 
 6.  Setup and assign Intune SCEP profile as described in the following
     article:
