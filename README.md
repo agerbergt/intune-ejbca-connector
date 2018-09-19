@@ -5,8 +5,15 @@ through Microsoft Intune and certificate enrollment through EJBCA.
 ## Requirements
 - EJBCA 6 (Developed with version 6.3.1.1)
 - Microsoft Intune Tenant
-- Tomcat (Tested with version 7)
-- Java (Verified with version 8)
+- Java Application Server (Tested with Tomcat 7)
+
+## Platform Compatibility
+| Platform         | Status      | Notes
+| ---------------- | ----------- | ---------
+| Android          | OK          | Tested with Android 8.
+| iOS              | OK          | Tested with iOS 11.4.1.
+| Windows          | OK          | Tested with Windows 10. SCEP Receiver certificate must be issued by the same CA chain as the end entity certificates.
+| MacOS X          | OK          | Tested with MacOS 10.12.6.
 
 ## Setup Guide
 1.  Prepare your Microsoft Intune tenant for third-party CA integration as

@@ -69,7 +69,7 @@ class IntuneScepServlet extends ScepServlet {
     @Override
     protected List<X509Certificate> doGetCaCertificate(String identifier)
             throws Exception {
-        log.info "CA certificate requested (Identifier: ${identifier}"
+        log.info "CA certificate requested (Identifier: ${identifier})"
         List<X509Certificate> caCertificates = receiverCertificateChain.toList()
 
         if(log.isDebugEnabled()){

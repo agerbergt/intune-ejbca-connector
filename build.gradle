@@ -12,7 +12,7 @@ buildscript {
     }
 }
 
-version "1.0"
+version "1.1"
 group "intune.ejbca.connector"
 
 apply plugin:"eclipse"
@@ -53,7 +53,7 @@ dependencies {
     compile "org.grails.plugins:cxf-client:3.0.7"
     compile "org.json:json:20180130"
     compile "com.microsoft.azure:adal4j:1.6.0"
-    compile name: "csr-validation-0.0.1-20180730.084929-1"
+    compile name: "csr-validation-0.0.1-20180919.094912-1"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
