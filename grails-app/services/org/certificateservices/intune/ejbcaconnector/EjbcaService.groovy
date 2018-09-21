@@ -1,3 +1,19 @@
+/**
+ * Copyright (C) 2018 CGI Certificate Services
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.certificateservices.intune.ejbcaconnector
 
 import grails.core.GrailsApplication
@@ -8,22 +24,17 @@ import org.bouncycastle.asn1.x509.Extension
 import org.bouncycastle.asn1.x509.GeneralName
 import org.bouncycastle.pkcs.PKCS10CertificationRequest
 import org.bouncycastle.util.encoders.Base64
-import org.ejbca.core.protocol.ws.Certificate
-import org.ejbca.core.protocol.ws.CertificateResponse
-import org.ejbca.core.protocol.ws.EjbcaWS
-import org.ejbca.core.protocol.ws.EjbcaWSService
-import org.ejbca.core.protocol.ws.UserDataVOWS
+import org.ejbca.core.protocol.ws.*
 
 import javax.annotation.PostConstruct
-import javax.net.ssl.HttpsURLConnection
-import javax.net.ssl.KeyManagerFactory
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLSocketFactory
 import javax.xml.namespace.QName
-import java.security.KeyStore
-import java.security.SecureRandom
 import java.security.cert.X509Certificate
 
+/**
+ * Service responsible for requesting certificates from EJBCA
+ *
+ * @author Tobias Agerberg
+ */
 @Transactional
 class EjbcaService {
     static final int EJBCA_USER_STATUS_NEW = 10
@@ -43,8 +54,8 @@ class EjbcaService {
     @PostConstruct
     void init() {
         if(grailsApplication.config.ejbca.keystorePath && grailsApplication.config.ejbca.keystorePassword){
-            System.setProperty("javax.net.ssl.keyStore", grailsApplication.config.ejbca.keystorePath);
-            System.setProperty("javax.net.ssl.keyStorePassword", grailsApplication.config.ejbca.keystorePassword);
+            System.setProperty("javax.net.ssl.keyStore", grailsApplication.config.ejbca.keystorePath)
+            System.setProperty("javax.net.ssl.keyStorePassword", grailsApplication.config.ejbca.keystorePassword)
         } else {
             throw new InvalidConfigurationException("Missing required configuration 'ejbca.keystorePath' and/or 'ejbca.keystorePassword'.")
         }
@@ -78,7 +89,7 @@ class EjbcaService {
     }
 
     X509Certificate requestCertificate(PKCS10CertificationRequest request) {
-        String subjectAltName
+        String subjectAltName = null
         String username = CertUtils.getSubjectDNField(request.subject.toString(), BCStyle.CN)
         String password = RandomStringUtils.random(16, true, true)
         String subjectDN = getSubjectDN(request)

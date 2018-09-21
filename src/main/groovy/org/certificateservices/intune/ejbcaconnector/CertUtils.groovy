@@ -1,3 +1,19 @@
+/**
+ * Copyright (C) 2018 CGI Certificate Services
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.certificateservices.intune.ejbcaconnector
 
 import org.bouncycastle.asn1.*
@@ -20,6 +36,9 @@ import java.security.cert.X509Certificate
 
 /**
  * Class containing certificate related utilities
+ *
+ * @author Tobias Agerberg
+ * @author Philip Vendil
  */
 class CertUtils {
     static final String UPN_OBJECTID = "1.3.6.1.4.1.311.20.2.3"
@@ -129,9 +148,9 @@ class CertUtils {
         ks.load(new FileInputStream(keystorePath), null)
         ks.aliases().each {
             if(ks.isKeyEntry(it)){
-                certificates.add(0, ks.getCertificate(it))
+                certificates.add(0, (X509Certificate)ks.getCertificate(it))
             } else {
-                certificates.add(ks.getCertificate(it))
+                certificates.add((X509Certificate)ks.getCertificate(it))
             }
         }
         return certificates

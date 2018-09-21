@@ -1,3 +1,19 @@
+/**
+ * Copyright (C) 2018 CGI Certificate Services
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.certificateservices.intune.ejbcaconnector
 
 import groovy.util.logging.Slf4j
@@ -5,6 +21,7 @@ import org.bouncycastle.asn1.x500.X500Name
 import org.bouncycastle.pkcs.PKCS10CertificationRequest
 import org.bouncycastle.util.encoders.Base64
 import org.jscep.server.ScepServlet
+import org.jscep.transaction.FailInfo
 import org.jscep.transaction.OperationFailureException
 import org.jscep.transaction.TransactionId
 import org.jscep.transport.response.Capability
@@ -15,6 +32,12 @@ import java.security.PrivateKey
 import java.security.cert.X509CRL
 import java.security.cert.X509Certificate
 
+/**
+ * SCEP Servlet responsible for processing incoming SCEP requests
+ * from devices managed through Intune.
+ *
+ * @author Tobias Agerberg
+ */
 @Slf4j
 class IntuneScepServlet extends ScepServlet {
     IntuneService intuneService
@@ -57,10 +80,10 @@ class IntuneScepServlet extends ScepServlet {
                     log.debug "Certificate (Base64): ${new String(Base64.encode(certificate.encoded))}"
                 }
             } else{
-                throw new OperationFailureException("Certificate request failed (Transaction ID: ${transactionId})")
+                throw new OperationFailureException("Certificate request failed (Transaction ID: " + transactionId.toString() + ")")
             }
         } else {
-            throw new OperationFailureException("Invalid certificate request (Transaction ID: ${transactionId})")
+            throw new OperationFailureException("Invalid certificate request (Transaction ID: " + transactionId.toString() + ")")
         }
 
         return certificateChain
@@ -138,21 +161,25 @@ class IntuneScepServlet extends ScepServlet {
 
     @Override
     protected List<X509Certificate> getNextCaCertificate(String identifier) throws Exception {
-        throw new OperationFailureException("Not implemented.")
+        // Not implemented
+        throw new OperationFailureException(FailInfo.badRequest)
     }
 
     @Override
     protected List<X509Certificate> doGetCert(X500Name issuer, BigInteger serial) throws Exception {
-        throw new OperationFailureException("Not implemented.")
+        // Not implemented
+        throw new OperationFailureException(FailInfo.badRequest)
     }
 
     @Override
     protected List<X509Certificate> doGetCertInitial(X500Name issuer, X500Name subject, TransactionId transId) throws Exception {
-        throw new OperationFailureException("Not implemented.")
+        // Not implemented
+        throw new OperationFailureException(FailInfo.badRequest)
     }
 
     @Override
     protected X509CRL doGetCrl(X500Name issuer, BigInteger serial) throws Exception {
-        throw new OperationFailureException("Not implemented.")
+        // Not implemented
+        throw new OperationFailureException(FailInfo.badRequest)
     }
 }

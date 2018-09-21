@@ -1,3 +1,19 @@
+/**
+ * Copyright (C) 2018 CGI Certificate Services
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.certificateservices.intune.ejbcaconnector
 
 import com.microsoft.intune.scepvalidation.IntuneScepServiceClient
@@ -15,6 +31,12 @@ import javax.xml.bind.DatatypeConverter
 import java.security.MessageDigest
 import java.security.cert.X509Certificate
 
+/**
+ * Service responsible for validating requests with Microsoft Intune
+ * and to send success/failure notifications.
+ *
+ * @author Tobias Agerberg
+ */
 @Transactional
 class IntuneService {
     static final String CHALLENGE_PASS_ASN1_OID = "1.2.840.113549.1.9.7"
@@ -51,8 +73,8 @@ class IntuneService {
     }
 
     boolean validateRequest(PKCS10CertificationRequest request, TransactionId transactionId){
-        boolean challengeIsValid = false;
-        boolean challengeExists = false;
+        boolean challengeIsValid = false
+        boolean challengeExists = false
         String base64Request = new String(Base64.encode(request.encoded))
 
         log.info "Validating PKCS#10 request (Transaction ID: ${transactionId})"
@@ -64,7 +86,7 @@ class IntuneService {
             try {
                 intuneScepServiceClient.ValidateRequest(transactionId.toString(), base64Request)
                 log.info "Challenge in PKCS#10 request validated successfully!"
-                challengeIsValid = true;
+                challengeIsValid = true
             } catch(IntuneScepServiceException e){
                 log.error "Request is not valid: ${e.message}"
 
