@@ -175,7 +175,7 @@ class CertUtils {
             }
         }
 
-        return ks.getKey(keystoreAlias, keystorePassword.toCharArray())
+        return (PrivateKey)ks.getKey(keystoreAlias, keystorePassword.toCharArray())
     }
 
     /**
@@ -185,7 +185,7 @@ class CertUtils {
      */
     static PKCS10CertificationRequest getPKCS10CertificationRequestFromFile(String path) {
         PEMParser pemParser = new PEMParser(new FileReader(path))
-        PKCS10CertificationRequest request = pemParser.readObject()
+        PKCS10CertificationRequest request = (PKCS10CertificationRequest)pemParser.readObject()
         return request
     }
 

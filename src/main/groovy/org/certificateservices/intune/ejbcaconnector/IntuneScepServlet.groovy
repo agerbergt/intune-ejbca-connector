@@ -23,6 +23,7 @@ import org.bouncycastle.util.encoders.Base64
 import org.jscep.server.ScepServlet
 import org.jscep.transaction.FailInfo
 import org.jscep.transaction.OperationFailureException
+import org.jscep.transaction.TransactionException
 import org.jscep.transaction.TransactionId
 import org.jscep.transport.response.Capability
 
@@ -80,10 +81,10 @@ class IntuneScepServlet extends ScepServlet {
                     log.debug "Certificate (Base64): ${new String(Base64.encode(certificate.encoded))}"
                 }
             } else{
-                throw new OperationFailureException("Certificate request failed (Transaction ID: " + transactionId.toString() + ")")
+                throw new TransactionException("Certificate request failed (Transaction ID: " + transactionId.toString() + ")")
             }
         } else {
-            throw new OperationFailureException("Invalid certificate request (Transaction ID: " + transactionId.toString() + ")")
+            throw new TransactionException("Invalid certificate request (Transaction ID: " + transactionId.toString() + ")")
         }
 
         return certificateChain
