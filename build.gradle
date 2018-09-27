@@ -86,3 +86,10 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+
+war {
+    from("grails-app/conf") {
+        include "ejbcaws.wsdl"
+        into "WEB-INF/classes"
+    }
+}

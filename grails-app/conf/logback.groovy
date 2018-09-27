@@ -22,7 +22,7 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 appender("FILE", FileAppender) {
-    file = "intune-ejbca-connector.log"
+    file = (System.getProperty('catalina.base') ?: ".") + "/logs/intune-ejbca-connector.log"
     append = true
     encoder(PatternLayoutEncoder) {
         pattern =

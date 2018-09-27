@@ -130,7 +130,7 @@ environments:
 cxf:
     client:
         ejbcaServiceClient:
-            wsdl: docs/ejbcaws.wsdl
+            wsdl: grails-app/conf/ejbcaws.wsdl
             serviceEndpointAddress: https://localhost:8443/ejbca/ejbcaws/ejbcaws
             namespace: org.ejbca.core.protocol.ws
             clientInterface: org.ejbca.core.protocol.ws.EjbcaWSService

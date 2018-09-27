@@ -19,6 +19,10 @@ package org.certificateservices.intune.ejbcaconnector
 import grails.core.GrailsApplication
 import grails.gorm.transactions.Transactional
 import org.apache.commons.lang.RandomStringUtils
+import org.apache.cxf.configuration.jsse.TLSClientParameters
+import org.apache.cxf.endpoint.Client
+import org.apache.cxf.frontend.ClientProxy
+import org.apache.cxf.transport.http.HTTPConduit
 import org.bouncycastle.asn1.x500.style.BCStyle
 import org.bouncycastle.asn1.x509.Extension
 import org.bouncycastle.asn1.x509.GeneralName
@@ -27,7 +31,11 @@ import org.bouncycastle.util.encoders.Base64
 import org.ejbca.core.protocol.ws.*
 
 import javax.annotation.PostConstruct
+import javax.net.ssl.KeyManagerFactory
+import javax.net.ssl.SSLContext
 import javax.xml.namespace.QName
+import javax.xml.ws.BindingProvider
+import java.security.KeyStore
 import java.security.cert.X509Certificate
 
 /**
@@ -40,6 +48,7 @@ class EjbcaService {
     static final int EJBCA_USER_STATUS_NEW = 10
     static final String EJBCA_TOKEN_TYPE_USERGENERATED = "USERGENERATED"
     static final String EJBCA_RESPONSETYPE_CERTIFICATE = "CERTIFICATE"
+    static final String EJBCA_WS_DEFAULT_SSL_ALGORITHM = "TLSv1.2"
 
     private String certificateAuthority
     private String certificateProfile
@@ -53,10 +62,7 @@ class EjbcaService {
 
     @PostConstruct
     void init() {
-        if(grailsApplication.config.ejbca.keystorePath && grailsApplication.config.ejbca.keystorePassword){
-            System.setProperty("javax.net.ssl.keyStore", grailsApplication.config.ejbca.keystorePath)
-            System.setProperty("javax.net.ssl.keyStorePassword", grailsApplication.config.ejbca.keystorePassword)
-        } else {
+        if(!grailsApplication.config.ejbca.keystorePath || !grailsApplication.config.ejbca.keystorePassword){
             throw new InvalidConfigurationException("Missing required configuration 'ejbca.keystorePath' and/or 'ejbca.keystorePassword'.")
         }
 
@@ -71,12 +77,38 @@ class EjbcaService {
         }
 
         if(grailsApplication.config.ejbca.serviceUrl){
+            String serviceURL = grailsApplication.config.ejbca.serviceUrl
+            String sslAlgorithm = (grailsApplication.config.ejbca.sslAlgorithm ?: EJBCA_WS_DEFAULT_SSL_ALGORITHM)
+
             try {
-                log.info "Initializing connection to EJBCA (${grailsApplication.config.ejbca.serviceUrl})."
-                ejbcaWS = new EjbcaWSService(new URL(grailsApplication.config.ejbca.serviceUrl),
-                        new QName("http://ws.protocol.core.ejbca.org/", "EjbcaWSService")).ejbcaWSPort
+                log.info "Initializing connection to EJBCA (${serviceURL})."
+
+                SSLContext sslContext = createSSLContext(
+                        grailsApplication.config.ejbca.keystorePath,
+                        grailsApplication.config.ejbca.keystorePassword,
+                        sslAlgorithm
+                )
+
+                // Initialize web service client with WSDL from classpath first.
+                URL wsdlLocation = this.class.classLoader.getResource("ejbcaws.wsdl")
+                ejbcaWS = new EjbcaWSService(wsdlLocation, new QName("http://ws.protocol.core.ejbca.org/",
+                        "EjbcaWSService")).ejbcaWSPort
+                Client client = ClientProxy.getClient(ejbcaWS)
+                HTTPConduit http = (HTTPConduit) client.getConduit()
+
+                // Configure TLS parameters for client certificate authentication
+                // and setup endpoint address to use from configuration.
+                TLSClientParameters tlsClientParameters = new TLSClientParameters()
+                tlsClientParameters.setSSLSocketFactory(sslContext.getSocketFactory())
+                tlsClientParameters.setUseHttpsURLConnectionDefaultSslSocketFactory(false)
+                http.setTlsClientParameters(tlsClientParameters)
+                BindingProvider bindingProvider = (BindingProvider)ejbcaWS
+                bindingProvider.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, serviceURL)
+
+                log.info "Connection to EJBCA initialized successfully! (${ejbcaWS.getEjbcaVersion()})"
             } catch(Exception e) {
                 log.error "Unable to initialize connection to EJBCA. Check server and/or configuration and restart application (${e.message})"
+                e.printStackTrace()
                 return
             }
         } else {
@@ -86,6 +118,19 @@ class EjbcaService {
 
         baseDN = grailsApplication.config.profile.baseDN
         initialized = true
+    }
+
+    private SSLContext createSSLContext(String keystorePath, String keystorePassword, String algorithm) {
+        log.debug "Creating SSL Context for EJBCA WS connection (Keystore: ${keystorePath}, Algorithm: ${algorithm}"
+
+        SSLContext context = SSLContext.getInstance(algorithm)
+        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
+        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
+        keyStore.load(new FileInputStream(keystorePath), keystorePassword.toCharArray())
+        keyManagerFactory.init(keyStore, keystorePassword.toCharArray())
+        context.init(keyManagerFactory.getKeyManagers(), null, null)
+
+        return context
     }
 
     X509Certificate requestCertificate(PKCS10CertificationRequest request) {

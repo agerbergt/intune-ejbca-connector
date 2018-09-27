@@ -109,7 +109,7 @@ Section (**ejbca:**) containing configuration needed in order to connect to EJBC
 | serviceUrl       | EJBCA web service endpoint URL.
 | keystorePath     | Path to java key store containing administrator certificate to use when authenticating to EJBCA web service.
 | keystorePassword | Password that protects the keystore and the private key.
-
+| sslAlgorithm     | SSL Algorithm to use when connecting to EJBCA *(Optional - default is TLSv1.2)*
 ### SCEP configuration
 Section (**scep:**) containing configuration needed for the SCEP service.
 
@@ -130,8 +130,40 @@ Section (**profile:**) containing configuration needed to issue certificates fro
 | baseDN               | Optional DN string to append to all certificates, ex: "O=Some Company,C=SE".
 
 ## Logging
-Log is written to standard output which will be available in the application server log (eg. catalina.out)
+Default Log (INFO-level) is written to standard output which will be available in the application server log (eg. catalina.out)
 and to a log file named `intune-ejbca-connector.log` within the application server directory.
+
+### Customize logging
+Logging can be customized, ex. to enable DEBUG-level logging, by creating an external 
+log configuration file which is then specified with the following JVM parameter:
+
+    -Dlogging.config=/opt/intune-ejbca-connector/logback.groovy
+
+The following shows an example of a log configuration to enable DEBUG-level logging
+for the connector (_Note: This configuration will only print to log file and not standard output_).
+
+    import org.springframework.boot.logging.logback.ColorConverter
+    import org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter
+    
+    conversionRule 'clr', ColorConverter
+    conversionRule 'wex', WhitespaceThrowableProxyConverter
+    
+    appender("FILE", FileAppender) {
+        file = "intune-ejbca-connector.log"
+        append = true
+        encoder(PatternLayoutEncoder) {
+            pattern = '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} ' +
+                      '%clr(%5p) ' +
+                      '%clr(%-40.40logger{39}){cyan} %clr(:){faint} ' +
+                      '%m%n%wex'
+        }
+    }
+    
+    root(ERROR, ['FILE'])
+    
+    logger 'org.certificateservices', DEBUG
+    logger 'com.microsoft.intune', INFO
+
 
 ## Copyright & License
 Copyright (c) 2018 CGI Certificate Services - Released under the 
