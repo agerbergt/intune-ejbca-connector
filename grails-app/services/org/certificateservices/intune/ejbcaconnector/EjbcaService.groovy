@@ -32,6 +32,7 @@ import org.ejbca.core.protocol.ws.*
 
 import javax.annotation.PostConstruct
 import javax.net.ssl.KeyManagerFactory
+import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.SSLContext
 import javax.xml.namespace.QName
 import javax.xml.ws.BindingProvider
@@ -124,11 +125,18 @@ class EjbcaService {
         log.debug "Creating SSL Context for EJBCA WS connection (Keystore: ${keystorePath}, Algorithm: ${algorithm}"
 
         SSLContext context = SSLContext.getInstance(algorithm)
+
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
         keyStore.load(new FileInputStream(keystorePath), keystorePassword.toCharArray())
         keyManagerFactory.init(keyStore, keystorePassword.toCharArray())
-        context.init(keyManagerFactory.getKeyManagers(), null, null)
+
+        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+        KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType())
+        trustStore.load(new FileInputStream(keystorePath), keystorePassword.toCharArray())
+        trustManagerFactory.init(trustStore)
+
+        context.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null)
 
         return context
     }
