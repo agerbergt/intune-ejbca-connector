@@ -30,6 +30,7 @@ through Microsoft Intune and certificate enrollment through EJBCA.
     - **SSL server certificate** - Used by Tomcat connector to secure communication from mobile devices. Should be issued as a Java Keystore (JKS).
     - **SCEP Receiver certificate** - Used by Intune EJBCA Connector to secure SCEP messages from mobile devices. Should be issued as a Java Keystore (JKS) and will be returned to mobile devices through the SCEP call `GetCACerts`.
     - **EJBCA Admin certificate** - Used by Intune EJBCA Connector to authenticate to EJBCA Web service. Should be issued as a Java Keystore (JKS) and given required administrator permissions.
+    - **EJBCA SSL certificate** - Used by Intune EJBCA Connector to communicate to EJBCA Web service. Should be issued as a Java Keystore (JKS). It needs only root and intermediate certificate, do not include the EJBCA server certificate ane keys (Optional)
 
 3.  Prepare a Tomcat application server that is going to host the
     web application. It is strongly recommended to setup a secure HTTPS
@@ -103,13 +104,16 @@ Values for `appId` and `appKey` should be specified as noted in step 1 in _Setup
 ### EJBCA configuration
 Section (**ejbca:**) containing configuration needed in order to connect to EJBCA.
 
-| Key              | Description
-| ---------------- | -----------
-| serviceName      | Arbitrary name and version of EJBCA service _(ex. EJBCA 6.3.1.1)_.
-| serviceUrl       | EJBCA web service endpoint URL.
-| keystorePath     | Path to java key store containing administrator certificate to use when authenticating to EJBCA web service.
-| keystorePassword | Password that protects the keystore and the private key.
-| sslAlgorithm     | SSL Algorithm to use when connecting to EJBCA *(Optional - default is TLSv1.2)*
+| Key                | Description
+| ------------------ | -----------
+| serviceName        | Arbitrary name and version of EJBCA service _(ex. EJBCA 6.3.1.1)_.
+| serviceUrl         | EJBCA web service endpoint URL.
+| keystorePath       | Path to java key store containing administrator certificate to use when authenticating to EJBCA web service.
+| keystorePassword   | Password that protects the keystore and the private key.
+| truststorePath     | Path to java key store containing root and intermediate certificate to use when communicate to EJBCA web service (Optional)
+| truststorePassword | Password that protects the truststore (Optional - required to use truststore)
+| sslAlgorithm       | SSL Algorithm to use when connecting to EJBCA *(Optional - default is TLSv1.2)*
+
 ### SCEP configuration
 Section (**scep:**) containing configuration needed for the SCEP service.
 
