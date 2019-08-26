@@ -32,6 +32,9 @@ import org.ejbca.core.protocol.ws.*
 
 import javax.annotation.PostConstruct
 import javax.net.ssl.KeyManagerFactory
+import javax.net.ssl.KeyManager
+import javax.net.ssl.TrustManagerFactory
+import javax.net.ssl.TrustManager
 import javax.net.ssl.SSLContext
 import javax.xml.namespace.QName
 import javax.xml.ws.BindingProvider
@@ -66,6 +69,10 @@ class EjbcaService {
             throw new InvalidConfigurationException("Missing required configuration 'ejbca.keystorePath' and/or 'ejbca.keystorePassword'.")
         }
 
+        if(grailsApplication.config.ejbca.truststorePath && !grailsApplication.config.ejbca.truststorePassword) {
+            throw new InvalidConfigurationException("Missing configuration 'ejbca.truststorePassword' is required when specify truststore.")
+        }
+
         if(grailsApplication.config.profile.certificateAuthority && grailsApplication.config.profile.certificateProfile &&
                 grailsApplication.config.profile.endEntityProfile) {
             certificateAuthority = grailsApplication.config.profile.certificateAuthority
@@ -79,6 +86,8 @@ class EjbcaService {
         if(grailsApplication.config.ejbca.serviceUrl){
             String serviceURL = grailsApplication.config.ejbca.serviceUrl
             String sslAlgorithm = (grailsApplication.config.ejbca.sslAlgorithm ?: EJBCA_WS_DEFAULT_SSL_ALGORITHM)
+            String truststorePath = grailsApplication.config.ejbca.truststorePath ? grailsApplication.config.ejbca.truststorePath : null
+            String truststorePassword = grailsApplication.config.ejbca.truststorePassword ? grailsApplication.config.ejbca.truststorePassword : null
 
             try {
                 log.info "Initializing connection to EJBCA (${serviceURL})."
@@ -86,6 +95,8 @@ class EjbcaService {
                 SSLContext sslContext = createSSLContext(
                         grailsApplication.config.ejbca.keystorePath,
                         grailsApplication.config.ejbca.keystorePassword,
+                        truststorePath,
+                        truststorePassword,
                         sslAlgorithm
                 )
 
@@ -120,15 +131,28 @@ class EjbcaService {
         initialized = true
     }
 
-    private SSLContext createSSLContext(String keystorePath, String keystorePassword, String algorithm) {
-        log.debug "Creating SSL Context for EJBCA WS connection (Keystore: ${keystorePath}, Algorithm: ${algorithm}"
+    private SSLContext createSSLContext(String keystorePath, String keystorePassword, String truststorePath, String truststorePassword, String algorithm) {
+        log.debug "Creating SSL Context for EJBCA WS connection (Keystore: ${keystorePath}, trustStore: ${truststorePath}, Algorithm: ${algorithm})"
 
         SSLContext context = SSLContext.getInstance(algorithm)
+
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
         KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
         keyStore.load(new FileInputStream(keystorePath), keystorePassword.toCharArray())
         keyManagerFactory.init(keyStore, keystorePassword.toCharArray())
-        context.init(keyManagerFactory.getKeyManagers(), null, null)
+        KeyManager[] keyManagers = keyManagerFactory.getKeyManagers()
+
+        TrustManager[] trustManagers = null 
+        // Skip build truststore when not configured
+        if (truststorePath && truststorePassword) {
+            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType())
+            trustStore.load(new FileInputStream(truststorePath), truststorePassword.toCharArray())
+            trustManagerFactory.init(trustStore)
+            trustManagers = trustManagerFactory.getTrustManagers()
+        }
+
+        context.init(keyManagers, trustManagers, null)
 
         return context
     }
