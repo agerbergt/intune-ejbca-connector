@@ -30,7 +30,7 @@ through Microsoft Intune and certificate enrollment through EJBCA.
     - **SSL server certificate** - Used by Tomcat connector to secure communication from mobile devices. Should be issued as a Java Keystore (JKS).
     - **SCEP Receiver certificate** - Used by Intune EJBCA Connector to secure SCEP messages from mobile devices. Should be issued as a Java Keystore (JKS) and will be returned to mobile devices through the SCEP call `GetCACerts`.
     - **EJBCA Admin certificate** - Used by Intune EJBCA Connector to authenticate to EJBCA Web service. Should be issued as a Java Keystore (JKS) and given required administrator permissions.
-    - **EJBCA SSL certificate** - Used by Intune EJBCA Connector to communicate to EJBCA Web service. Should be issued as a Java Keystore (JKS). It needs only root and intermediate certificate, do not include the EJBCA server certificate ane keys (Optional)
+    - **EJBCA SSL truststore** - Used by Intune EJBCA Connector to communicate to EJBCA Web service. Should be issued as a Java Keystore (JKS). It needs only root and intermediate certificate, do not include the EJBCA server certificate or keys (Optional)
 
 3.  Prepare a Tomcat application server that is going to host the
     web application. It is strongly recommended to setup a secure HTTPS
