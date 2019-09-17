@@ -24,12 +24,14 @@ import org.bouncycastle.asn1.ASN1ObjectIdentifier
 import org.bouncycastle.asn1.pkcs.Attribute
 import org.bouncycastle.pkcs.PKCS10CertificationRequest
 import org.bouncycastle.util.encoders.Base64
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.jscep.transaction.TransactionId
 
 import javax.annotation.PostConstruct
 import javax.xml.bind.DatatypeConverter
 import java.security.MessageDigest
 import java.security.cert.X509Certificate
+import java.security.Security
 
 /**
  * Service responsible for validating requests with Microsoft Intune
@@ -49,6 +51,8 @@ class IntuneService {
 
     @PostConstruct
     void init() {
+        Security.addProvider(new BouncyCastleProvider())
+
         if(grailsApplication.config.intune.tenant && grailsApplication.config.intune.appId &&
                 grailsApplication.config.intune.appKey && grailsApplication.config.ejbca.serviceName){
             Properties properties = new Properties()

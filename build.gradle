@@ -50,6 +50,7 @@ dependencies {
     compile "org.hibernate:hibernate-core:5.1.5.Final"
     compile "org.grails.plugins:gsp"
     compile "com.google.code.jscep:jscep:2.3.0"
+    compile "org.bouncycastle:bcprov-jdk15on:1.51"
     compile "org.grails.plugins:cxf-client:3.0.7"
     compile "org.json:json:20180130"
     compile "com.microsoft.azure:adal4j:1.6.0"
